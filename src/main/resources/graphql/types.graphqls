@@ -1,0 +1,18 @@
+type AppConfigResponse{
+    name: String
+    description: String
+    version: String
+    time: DateTime
+}
+
+type EstadoResponse{
+    sigla: String
+    descricao: String
+}
+
+type MunicipioResponse{
+    codigo: String
+    descricao: String
+    estado: EstadoResponse
+    uf: String
+}
