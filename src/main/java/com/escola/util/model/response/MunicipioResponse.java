@@ -13,15 +13,6 @@ public class MunicipioResponse {
     String codigo;
     String descricao;
     String uf;
-    EstadoResponse estado;
+    String estado;
 
-    public String getUf() {
-        if (uf != null) {
-            return uf;
-        }
-        if (estado != null) {
-            return estado.sigla();
-        }
-        return "indetermidado";
-    }
 }

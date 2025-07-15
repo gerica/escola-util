@@ -33,7 +33,7 @@ public class PageableHelp {
         } else {
             // Apply default sort if no sort input is provided
             // This mirrors @PageableDefault(sort = "nome")
-            sortOrders.add(new Sort.Order(Sort.Direction.ASC, "nome"));
+            sortOrders.add(new Sort.Order(Sort.Direction.ASC, "codigo"));
         }
 
         return PageRequest.of(pageNum, pageSize, Sort.by(sortOrders));

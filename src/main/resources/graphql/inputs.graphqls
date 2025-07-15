@@ -1,0 +1,4 @@
+input SortRequest {
+    property: String!
+    direction: SortOrder!
+}

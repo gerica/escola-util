@@ -13,6 +13,17 @@ type EstadoResponse{
 type MunicipioResponse{
     codigo: String
     descricao: String
-    estado: EstadoResponse
     uf: String
+    estado: String
+}
+
+type MunicipioResponsePage {
+    content: [MunicipioResponse]
+    totalPages: Int
+    totalElements: Long
+    number: Int
+    size: Int
+    first: Boolean!
+    last: Boolean!
+    empty: Boolean!
 }

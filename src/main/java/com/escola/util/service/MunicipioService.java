@@ -1,17 +1,25 @@
 package com.escola.util.service;
 
 
-import com.escola.util.model.entity.User;
-import com.escola.util.model.response.MunicipioResponse;
-import com.escola.util.security.BaseException;
+import com.escola.util.model.entity.Municipio;
+import com.escola.util.model.request.MunicipioRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 public interface MunicipioService {
 
-    List<MunicipioResponse> findAll() throws BaseException, IOException;
+    void salvar(MunicipioRequest request);
 
-    MunicipioResponse findByID(String codigo, User user) throws BaseException, IOException;
+    Optional<List<Municipio>> findAll();
+
+    Optional<List<MunicipioRequest>> findAllJason() throws IOException;
+
+    Optional<Municipio> findByCodigo(String codigo);
+
+    Optional<Page<Municipio>> findByFiltro(String filtro, Pageable pageable);
 
 }
