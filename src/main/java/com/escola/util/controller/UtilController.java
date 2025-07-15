@@ -59,4 +59,10 @@ public class UtilController {
         return entities.map(municipioMapper::toOutput);
     }
 
+    @QueryMapping
+    @PreAuthorize("isAuthenticated()")
+    public Optional<MunicipioResponse> fetchMunicipioCodigo(@Argument String codigo) {
+        return municipioService.findByCodigo(codigo).map(municipioMapper::toOutput);
+    }
+
 }
