@@ -44,6 +44,16 @@ spring:
       allowed-origins: "*" # Em produção, especifique os domínios permitidos.
       allowed-methods: "GET, POST"
 
+  mail:
+    host: ${EMAIL_HOST}
+    port: ${EMAIL_PORT}
+    username:
+    password:
+    smtp:
+      auth: false
+      starttls:
+        enable: true
+
   # Spring DevTools para hot-reloading em desenvolvimento
 #  devtools:
 #    restart:

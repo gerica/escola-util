@@ -16,6 +16,16 @@ services:
     networks:
       - escola_escola-network
 
+  fakemail-escola:
+    container_name: fakemail-escola
+    image: gessnerfl/fake-smtp-server:latest
+    restart: no
+    networks:
+      - escola_escola-network
+    ports:
+      - "5080:8080"
+      - "8025:8025"
+
 networks:
   escola_escola-network:
     external: true

@@ -1,0 +1,21 @@
+# schema.graphqls
+type Query {
+    getAppConfig: AppConfigResponse!
+    getMunicipios: [MunicipioResponse]!
+    fetchByFiltro(
+        filtro: String
+        page: Int = 0 # Default to page 0
+        size: Int = 10 # Default to size 10
+        sort: [SortRequest]
+    ): MunicipioResponsePage!
+    fetchMunicipioCodigo(codigo: String): MunicipioResponse
+}
+
+type Mutation {
+    sendEmail(request: EmailRequest): String!
+}
+
+# Se você tiver subscriptions
+# type Subscription {
+#     # Nenhuma subscription específica aqui
+# }

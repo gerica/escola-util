@@ -2,3 +2,9 @@ input SortRequest {
     property: String!
     direction: SortOrder!
 }
+
+input EmailRequest{
+    to: String!
+    subject: String!
+    body: String!
+}
