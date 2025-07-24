@@ -3,6 +3,7 @@ package com.escola.util.service.impl;
 import com.escola.util.model.request.EmailRequest;
 import com.escola.util.security.EmailSendingException;
 import com.escola.util.service.EmailService;
+import com.escola.util.util.HtmlEmailGenerator;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.AccessLevel;
@@ -23,6 +24,7 @@ import reactor.core.scheduler.Schedulers;
 public class LocalEmailServiceImpl implements EmailService {
 
     final JavaMailSender javaMailSender;
+    final HtmlEmailGenerator htmlEmailGenerator;
 
     @Value("${server.email.from}")
     String fromEmail;
@@ -33,13 +35,14 @@ public class LocalEmailServiceImpl implements EmailService {
             log.error("JavaMailSender is not initialized");
             throw new IllegalStateException("JavaMailSender is not initialized");
         }
+        String body = htmlEmailGenerator.getBody(request);
         return Mono.fromRunnable(() -> {
                     MimeMessage msg = this.javaMailSender.createMimeMessage();
                     try {
                         MimeMessageHelper helper = new MimeMessageHelper(msg, true);
 
                         helper.setSubject(request.subject());
-                        helper.setText(request.body(), true);
+                        helper.setText(body, true);
                         helper.setFrom(fromEmail);
                         helper.setTo(request.to());
                         this.javaMailSender.send(msg);

@@ -34,7 +34,7 @@ public class ResendServiceImpl implements EmailService {
                 .from(fromEmail) // Use um e-mail configurado
                 .to(request.to())
                 .subject(request.subject())
-                .html(request.body())
+//                .html(request.body())
                 .build();
 
         // 2. Encapsule a chamada bloqueante em um Mono

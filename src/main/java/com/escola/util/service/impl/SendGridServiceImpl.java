@@ -38,7 +38,7 @@ public class SendGridServiceImpl implements EmailService {
         // 1. Construa os parâmetros a partir do request
         Email from = new Email(fromEmail);
         Email to = new Email(request.to());
-        Content content = new Content("text/html", request.body());
+        Content content = new Content("text/html", "temp");
         Mail mail = new Mail(from, request.subject(), to, content);
 
         // 2. Encapsule a chamada bloqueante em um Mono

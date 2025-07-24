@@ -3,8 +3,15 @@ input SortRequest {
     direction: SortOrder!
 }
 
+# Novo input para representar um par de chave-valor
+input KeyValueInput {
+    key: String!
+    value: String!
+}
+
 input EmailRequest{
     to: String!
     subject: String!
-    body: String!
+    tipo: TipoEmail!
+    variaveis: [KeyValueInput!]
 }

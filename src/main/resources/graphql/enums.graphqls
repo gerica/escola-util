@@ -7,3 +7,7 @@ enum SortOrder {
     asc
     desc
 }
+
+enum TipoEmail {
+    ONBOARDING
+}

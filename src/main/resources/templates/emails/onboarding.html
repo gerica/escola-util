@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeiro Acesso ao Sistema</title>
+    <style>
+        /* Estilos gerais para o corpo do e-mail */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7f6;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        /* Container principal */
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden; /* Garante que o border-radius seja aplicado nos cantos */
+        }
+        /* Conteúdo do e-mail */
+        .content {
+            padding: 40px;
+            color: #555555;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        /* Cabeçalho */
+        .header {
+            background-color: #0056b3; /* Cor primária do seu sistema */
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        /* Caixa da senha */
+        .password-box {
+            background-color: #e9ecef;
+            border: 1px dashed #ced4da;
+            border-radius: 5px;
+            padding: 15px;
+            text-align: center;
+            margin: 25px 0;
+        }
+        .password-text {
+            font-size: 22px;
+            font-weight: bold;
+            color: #0056b3;
+            letter-spacing: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        /* Botão de Ação (CTA) */
+        .cta-button {
+            display: inline-block;
+            background-color: #28a745; /* Cor de sucesso/ação */
+            color: #ffffff;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        /* Rodapé */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #888888;
+        }
+    </style>
+</head>
+<body>
+<!--
+    Variáveis Thymeleaf esperadas neste template:
+    - ${nomeUsuario}: O nome do usuário para uma saudação personalizada.
+    - ${senhaTemporaria}: A senha de primeiro acesso gerada.
+    - ${urlLogin}: O link para a página de login do sistema.
+    - ${nomeSistema}: O nome do seu sistema, para o rodapé.
+-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f4f7f6;">
+    <tr>
+        <td align="center" style="padding: 20px 0;">
+            <table class="container" border="0" cellspacing="0" cellpadding="0">
+                <!-- Cabeçalho -->
+                <tr>
+                    <td class="header">
+                        <h1>Bem-vindo(a)!</h1>
+                    </td>
+                </tr>
+                <!-- Conteúdo Principal -->
+                <tr>
+                    <td class="content">
+                        <p>Olá, <strong th:text="${nomeUsuario}">Nome do Usuário</strong>!</p>
+                        <p>Sua conta foi criada com sucesso no nosso sistema. Para seu primeiro acesso, por favor, utilize a senha temporária abaixo:</p>
+
+                        <!-- Caixa da Senha -->
+                        <div class="password-box">
+                            <span class="password-text" th:text="${senhaTemporaria}">S3NH@-T3MP</span>
+                        </div>
+
+                        <p>
+                            <strong>Importante:</strong> Por motivos de segurança, o sistema solicitará que você
+                            <strong>crie uma nova senha pessoal</strong> logo após o seu primeiro login.
+                        </p>
+
+                        <!-- Botão de Ação -->
+                        <p style="text-align: center;">
+                            <a th:href="${urlLogin}" href="#" class="cta-button" target="_blank">Acessar o Sistema</a>
+                        </p>
+
+                        <p>Se você não solicitou este acesso, por favor, ignore este e-mail.</p>
+                    </td>
+                </tr>
+                <!-- Rodapé -->
+                <tr>
+                    <td class="footer">
+                        <p>E-mail enviado automaticamente pelo sistema <span th:text="${nomeSistema}">Nome do Sistema</span>.</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
