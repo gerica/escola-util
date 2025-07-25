@@ -1,5 +1,6 @@
 package com.escola.util.model.entity;
 
 public enum TipoEmail {
-    ONBOARDING
+    ONBOARDING,
+    RESET_PASSWORD
 }

@@ -35,6 +35,19 @@ public class HtmlEmailGenerator {
         return emailTemplateEngine.process("onboarding", context);
     }
 
+    public String getBodyResetarSenha(EmailRequest emailRequest) {
+        Map<String, Object> variaveisDoTemplate = converterParaMap(emailRequest.variaveis());
+
+        Context context = new Context(new Locale("pt", "BR"));
+
+        context.setVariable("nomeUsuario", variaveisDoTemplate.get("nomeUsuario"));
+        context.setVariable("senhaTemporaria", variaveisDoTemplate.get("senhaTemporaria")); // Already formatted
+        context.setVariable("urlLogin", variaveisDoTemplate.get("urlLogin")); // Already formatted
+        context.setVariable("nomeSistema", variaveisDoTemplate.get("nomeSistema")); // Already formatted
+
+        return emailTemplateEngine.process("reset_password", context);
+    }
+
     public String getBodyDefault() {
         Context context = new Context(new Locale("pt", "BR"));
 
@@ -48,6 +61,9 @@ public class HtmlEmailGenerator {
         switch (emailRequest.tipo()) {
             case ONBOARDING -> {
                 return getBodyPrimeiroAcesso(emailRequest);
+            }
+            case RESET_PASSWORD -> {
+                return getBodyResetarSenha(emailRequest);
             }
             default -> {
                 return getBodyDefault();

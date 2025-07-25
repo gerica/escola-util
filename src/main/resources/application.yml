@@ -91,3 +91,4 @@ logging:
     org.springframework.security: INFO
     org.hibernate.SQL: DEBUG # Útil para ver as queries SQL geradas
     org.hibernate.type.descriptor.sql: TRACE # Útil para ver os parâmetros das queries
+    org.springframework.web: TRACE
