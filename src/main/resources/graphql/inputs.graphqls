@@ -15,3 +15,7 @@ input EmailRequest{
     tipo: TipoEmail!
     variaveis: [KeyValueInput!]
 }
+
+input FileRequest{
+    contentFileBase64: String!
+}

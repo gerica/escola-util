@@ -11,6 +11,7 @@ services:
       - "${MODULO_SERVICE_DEBUG_PORT}:${MODULO_SERVICE_DEBUG_PORT}"
     volumes:
       - .:/app
+      - uploads:/app/uploads
     env_file:
       - ./.env
     networks:
@@ -29,3 +30,7 @@ services:
 networks:
   escola_escola-network:
     external: true
+
+volumes:
+  # Define um volume nomeado para ser usado pelos contêineres.
+  uploads:

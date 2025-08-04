@@ -9,10 +9,13 @@ type Query {
         sort: [SortRequest]
     ): MunicipioResponsePage!
     fetchMunicipioCodigo(codigo: String): MunicipioResponse
+    fetchFileByUUID(uuid: String!): String!
 }
 
 type Mutation {
     sendEmail(request: EmailRequest): String!
+    sendFileUpload(request: FileRequest): String!
+    deleteFileByUUID(uuid: String!): Boolean!
 }
 
 # Se você tiver subscriptions
